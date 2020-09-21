@@ -55,6 +55,7 @@ int  main(void) {
               break;
       case 3:
               print_stack(head);
+              printf("\n");
               break;
       case 4:
               choice = 4;
