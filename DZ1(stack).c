@@ -30,6 +30,9 @@ struct stack* pop(struct stack* temp){
 }
 
 void print_stack(struct stack* temp){
+   if (temp == NULL){
+    printf("stack is empty \n");
+  }
   while (temp != NULL) {
     printf("%d ",temp->value);
     temp = temp->next;
