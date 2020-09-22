@@ -18,24 +18,25 @@ struct stack* push(struct stack* head, int new_value){
 }
 
 
-struct stack* pop(struct stack* temp){
-  if (temp == NULL){
+struct stack* pop(struct stack* head){
+  if (head == NULL){
     printf("stack is empty \n");
   } else{
-    struct stack* delete = temp;
-    temp = temp->next;
+    struct stack* delete = head;
+    head = head->next;
     free(delete);
 }
-  return temp;
+  return head;
 }
 
-void print_stack(struct stack* temp){
-   if (temp == NULL){
+
+void print_stack(struct stack* head){
+   if (head == NULL){
     printf("stack is empty \n");
   }
-  while (temp != NULL) {
-    printf("%d ",temp->value);
-    temp = temp->next;
+  while (head != NULL) {
+    printf("%d ",head->value);
+    head = head->next;
   }
 
 }
