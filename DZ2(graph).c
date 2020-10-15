@@ -9,11 +9,7 @@ struct nodes{
   int value;
 }nodes[N];
 
-/*struct svaz{
-  int number;
-  struct svaz* next;
-}svaz[N];
-*/
+
 void remember_nodes(int number, int value){
   int i = 0;
   for (i = 1; i <= number; i++) {
@@ -38,6 +34,7 @@ int check_node(int number,int value){
   }
 }
 
+
 void print_nodes_and_values(int number){
   int i = 0;
   FILE *fp;
@@ -61,14 +58,10 @@ void print_connection(int count,int number1, int number2){
   for (i = 1; i <= count; i++) {
     for (j = 1; j <= count; j++)
   if ((number1 == nodes[i].number)&&(number2 == nodes[j].number)){
-    fprintf(fp, "node%d -- node%d; \n",number1,number2 );
+    fprintf(fp, "node%d -> node%d; \n",number1,number2 );
   } //else { printf("Error \n");}
   }
 }
-
-
-
-
 
 
 void check_svaz(int number, int i){
@@ -93,9 +86,7 @@ int main(void) {
   int* con1;
   int* con2;
   FILE *fp;
-
-
-
+  
 
   fp = fopen("gr.txt","w");
   fprintf(fp, "%s\n","digraph G {" );
@@ -113,7 +104,7 @@ int main(void) {
 
 
   printf("Write node's values: \n");
-while (k < number) {
+  while (k < number) {
     scanf("%d",&value);
 
     remember_nodes(number, value);
@@ -132,22 +123,21 @@ k = 0;
     }
 i = 0;
 printf("\n Write connections (write 0 to end)\n");
- while (connection1 != 0){
+  while (connection1 != 0){
   scanf("%d %d\n",&connection1,&connection2);
   print_connection(number,connection1,connection2);
   k++;
   if (connection1 == connection2){ same++; }
   else if(connection1 < connection2){
   con1[i] = connection1;
-  con2[i] = connection2;} else if(connection1 > connection2){
+  con2[i] = connection2;
+  i++;}
+ else if(connection1 > connection2){
     con1[i] = connection2;
     con2[i] = connection1;}
   i++;}
 
 
-
-
-//check_connection(k,con1,con2,number,same,i);
 check_svaz(number,i);
 
 
